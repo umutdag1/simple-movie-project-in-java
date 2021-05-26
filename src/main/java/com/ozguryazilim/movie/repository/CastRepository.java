@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface CastRepository extends JpaRepository<CastModel,Long> {
     Optional<CastModel> findByCastname(String castname);
+    Optional<CastModel> findTopByOrderByCastidDesc();
 }

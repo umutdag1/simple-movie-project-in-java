@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "casts")
 public class CastModel {
@@ -21,8 +22,5 @@ public class CastModel {
     @Setter
     private String castname;
 
-    public CastModel(Long castid, String castname) {
-        this.castid = castid;
-        this.castname = castname;
-    }
+
 }

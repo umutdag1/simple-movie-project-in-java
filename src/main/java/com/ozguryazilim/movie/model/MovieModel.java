@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "movies")
 public class MovieModel {
@@ -51,14 +52,4 @@ public class MovieModel {
     @Setter
     private List<CastModel> cast;
 
-    public MovieModel(Long id,String name, String year, String type, String explanation, String media, List<LanguageModel> lang, List<CastModel> cast) {
-        this.id = id;
-        this.name = name;
-        this.year = year;
-        this.type = type;
-        this.explanation = explanation;
-        this.media = media;
-        this.lang = lang;
-        this.cast = cast;
-    }
 }

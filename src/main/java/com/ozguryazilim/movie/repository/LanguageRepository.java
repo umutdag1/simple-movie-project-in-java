@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface LanguageRepository extends JpaRepository<LanguageModel,Long> {
     Optional<LanguageModel> findByLangname(String langname);
+    Optional<LanguageModel> findTopByOrderByLangidDesc();
 }

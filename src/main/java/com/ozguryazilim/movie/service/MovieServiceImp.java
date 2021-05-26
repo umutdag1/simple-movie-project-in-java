@@ -63,4 +63,18 @@ public class MovieServiceImp implements MovieService{
         return castModel;
 
     }
+
+    @Override
+    public Long getLangLastinsertId() {
+        final Optional<LanguageModel> langModel =
+                languageRepository.findTopByOrderByLangidDesc();
+        return langModel.get().getLangid();
+    }
+
+    @Override
+    public Long getCastLastinsertId() {
+        final Optional<CastModel> castModel =
+                castRepository.findTopByOrderByCastidDesc();
+        return castModel.get().getCastid();
+    }
 }

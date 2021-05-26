@@ -1,12 +1,14 @@
 package com.ozguryazilim.movie.dto;
 
 import com.ozguryazilim.movie.model.MovieModel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 
 public class MovieDTO{
@@ -27,16 +29,6 @@ public class MovieDTO{
 
     private List<CastDTO> cast;
 
-    public MovieDTO(Long id, String name, String year, String type, String explanation, String media, List<LanguageDTO> lang, List<CastDTO> cast) {
-        this.id = id;
-        this.name = name;
-        this.year = year;
-        this.type = type;
-        this.explanation = explanation;
-        this.media = media;
-        this.lang = lang;
-        this.cast = cast;
-    }
 
     public static MovieDTO of(MovieModel movieModel){
         return new MovieDTO(

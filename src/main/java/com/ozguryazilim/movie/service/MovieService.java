@@ -16,4 +16,6 @@ public interface MovieService {
     void saveMovie(MovieModel movieModel);
     Optional<LanguageModel> getLanguageByNameAsModel(String langname);
     Optional<CastModel> getCastByNameAsModel(String castname);
+    Long getLangLastinsertId();
+    Long getCastLastinsertId();
 }

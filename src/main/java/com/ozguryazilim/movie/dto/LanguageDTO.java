@@ -1,21 +1,18 @@
 package com.ozguryazilim.movie.dto;
 
 import com.ozguryazilim.movie.model.LanguageModel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
+@AllArgsConstructor
 public class LanguageDTO{
     private Long langid;
 
     private String langname;
-
-    public LanguageDTO(Long langid, String langname) {
-        this.langid = langid;
-        this.langname = langname;
-    }
 
     public static LanguageDTO of(LanguageModel languageModel){
         return new LanguageDTO(languageModel.getLangid(),languageModel.getLangname());

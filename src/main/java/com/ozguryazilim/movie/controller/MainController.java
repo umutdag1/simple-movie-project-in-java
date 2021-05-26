@@ -75,25 +75,30 @@ public class MainController {
             movieModel.setExplanation(explanation);
             movieModel.setMedia(media);
 
+            Long langLastInsertid =
+                    movieService.getLangLastinsertId();
             for(String lang : langs){
                 Optional<LanguageModel> checkLangModelifExist =
-                        movieService.getLanguageByNameAsModel(lang);
+                        movieService.getLanguageByNameAsModel(lang.trim());
                 if(!checkLangModelifExist.isPresent()){
+                    langLastInsertid +=1;
                     LanguageModel languageModel =
-                            new LanguageModel(checkLangModelifExist.get().getLangid(),lang);
+                            new LanguageModel(langLastInsertid,lang.trim());
                     languageModelList.add(languageModel);
-                    movieModel.setLang(languageModelList);
                 } else {
                     languageModelList.add(checkLangModelifExist.get());
                 }
 
             }
 
+            Long castLastInsertid =
+                    movieService.getCastLastinsertId();
             for(String c : casts){
                 Optional<CastModel> checkCastModelifExist =
-                        movieService.getCastByNameAsModel(c);
+                        movieService.getCastByNameAsModel(c.trim());
                 if(!checkCastModelifExist.isPresent()) {
-                    CastModel castModel = new CastModel(checkCastModelifExist.get().getCastid(),c);
+                    castLastInsertid += 1;
+                    CastModel castModel = new CastModel(castLastInsertid,c.trim());
                     castModelList.add(castModel);
                 } else {
                     castModelList.add(checkCastModelifExist.get());
