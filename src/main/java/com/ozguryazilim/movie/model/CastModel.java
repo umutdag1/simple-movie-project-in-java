@@ -1,12 +1,8 @@
 package com.ozguryazilim.movie.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -25,4 +21,8 @@ public class CastModel {
     @Setter
     private String castname;
 
+    public CastModel(Long castid, String castname) {
+        this.castid = castid;
+        this.castname = castname;
+    }
 }

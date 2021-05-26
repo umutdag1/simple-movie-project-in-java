@@ -1,15 +1,11 @@
 package com.ozguryazilim.movie.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
-@Entity
 @NoArgsConstructor
 @Table(name = "movies")
 public class MovieModel {
@@ -44,14 +40,24 @@ public class MovieModel {
     @Setter
     private String media;
 
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @Getter
     @Setter
     private List<LanguageModel> lang;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @Getter
     @Setter
     private List<CastModel> cast;
 
+    public MovieModel(Long id,String name, String year, String type, String explanation, String media, List<LanguageModel> lang, List<CastModel> cast) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+        this.type = type;
+        this.explanation = explanation;
+        this.media = media;
+        this.lang = lang;
+        this.cast = cast;
+    }
 }

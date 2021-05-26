@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "languages")
 public class LanguageModel {
     @Id
@@ -21,4 +20,8 @@ public class LanguageModel {
     @Setter
     private String langname;
 
+    public LanguageModel(Long langid, String langname) {
+        this.langid = langid;
+        this.langname = langname;
+    }
 }

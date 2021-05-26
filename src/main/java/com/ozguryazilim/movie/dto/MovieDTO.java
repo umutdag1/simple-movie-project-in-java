@@ -1,15 +1,14 @@
 package com.ozguryazilim.movie.dto;
 
 import com.ozguryazilim.movie.model.MovieModel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-public class MovieDTO implements Serializable {
+@NoArgsConstructor
+public class MovieDTO{
 
     private Long id;
 
@@ -27,6 +26,17 @@ public class MovieDTO implements Serializable {
 
     private List<CastDTO> cast;
 
+    public MovieDTO(Long id, String name, String year, String type, String explanation, String media, List<LanguageDTO> lang, List<CastDTO> cast) {
+        this.id = id;
+        this.name = name;
+        this.year = year;
+        this.type = type;
+        this.explanation = explanation;
+        this.media = media;
+        this.lang = lang;
+        this.cast = cast;
+    }
+
     public static MovieDTO of(MovieModel movieModel){
         return new MovieDTO(
                 movieModel.getId(),
@@ -36,6 +46,7 @@ public class MovieDTO implements Serializable {
                 movieModel.getExplanation(),
                 movieModel.getMedia(),
                 LanguageDTO.ofList(movieModel.getLang()),
-                CastDTO.ofList(movieModel.getCast()));
+                CastDTO.ofList(movieModel.getCast())
+        );
     }
 }

@@ -1,12 +1,12 @@
 package com.ozguryazilim.movie.repository;
 
-import com.fasterxml.jackson.annotation.OptBoolean;
-import com.ozguryazilim.movie.model.MovieModel;
+import com.ozguryazilim.movie.model.CastModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface MovieRepository extends JpaRepository<MovieModel, Long> {
+public interface CastRepository extends JpaRepository<CastModel,Long> {
+    Optional<CastModel> findByCastname(String castname);
 }
