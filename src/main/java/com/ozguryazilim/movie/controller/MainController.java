@@ -6,7 +6,6 @@ import com.ozguryazilim.movie.dto.MovieDTO;
 import com.ozguryazilim.movie.model.CastModel;
 import com.ozguryazilim.movie.model.LanguageModel;
 import com.ozguryazilim.movie.model.MovieModel;
-import com.ozguryazilim.movie.repository.MovieRepository;
 import com.ozguryazilim.movie.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
