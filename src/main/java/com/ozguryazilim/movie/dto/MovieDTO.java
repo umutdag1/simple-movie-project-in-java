@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+
 public class MovieDTO{
 
     private Long id;

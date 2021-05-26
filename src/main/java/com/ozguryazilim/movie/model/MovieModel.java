@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@Entity
 @Table(name = "movies")
 public class MovieModel {
     @Id
