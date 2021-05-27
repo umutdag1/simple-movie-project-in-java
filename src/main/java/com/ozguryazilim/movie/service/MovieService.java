@@ -11,6 +11,9 @@ import java.util.Optional;
 public interface MovieService {
 
     List<MovieDTO> getAllMovie();
+    List<MovieDTO> getAllMovieByName(String name);
+    List<MovieDTO> getAllMovieByCast(String cast);
+    List<MovieDTO> getAllMovieByType(String type);
     Optional<MovieDTO> getMovieById(Long id);
     Optional<MovieModel> getMovieByIdAsModel(Long id);
     void saveMovie(MovieModel movieModel);

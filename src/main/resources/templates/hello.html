@@ -3,11 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
-  <div class="container mt-3">
-    <div class="row">
+<div class="container mt-3">
+    <form action="#" th:action="@{/movies/showMoviesByFilter}" method="post">
+        <div class="row">
+            <div class="col-md-3 my-2">
+                <label for="name">Movie Name : </label>
+                <input type="text" id="name" th:name="name">
+            </div>
+            <div class="col-md-3 my-2">
+                <label for="cast">Cast Name/Surname : </label>
+                <input type="text" id="cast" th:name="cast">
+            </div>
+            <div class="col-md-3 my-2">
+                <label for="type">Movie Type : </label>
+                <input type="text" id="type" th:name="type">
+            </div>
+            <div class="col-md-3 my-2">
+                <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Search</button>
+            </div>
+        </div>
+    </form>
+    <div class="row mt-3">
         <div class="card offset-md-1 col-md-3" th:each="movie, state : ${movieList}">
             <div class="card-body">
                 <div class="card-text">
@@ -36,7 +56,7 @@
                         <span th:text="${lang.getLangname()} + ','"></span>
                     </span>
                 </div>
-                <div class="card-text" >
+                <div class="card-text">
                     <span><strong>Cast: </strong></span>
                     <span th:each="cast, stateCast : ${movie.getCast()}">
                         <span th:text="${cast.getCastname()} + ','"></span>
@@ -44,18 +64,24 @@
                 </div>
                 <div class="card-text mt-2">
                     <a th:href="@{'/movies/edit/' + ${movie.getId()}}" class="btn btn-primary" id="editbtn">Edit</a>
-                    <a th:href="@{'/movies/delete/' + ${movie.getId()}}" class="btn btn-danger" id="deletebtn">Delete</a>
+                    <a th:href="@{'/movies/delete/' + ${movie.getId()}}" class="btn btn-danger"
+                       id="deletebtn">Delete</a>
                 </div>
             </div>
         </div>
     </div>
-  </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+<script>
 
-  </script>
+</script>
 </body>
 </html>
