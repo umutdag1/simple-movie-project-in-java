@@ -30,6 +30,14 @@ public class MovieServiceImp implements MovieService{
     }
 
     @Override
+    public List<MovieDTO> getAllMovieByFilter(String cast,String name,String type) {
+        final List<MovieDTO> filteredmovieDTOList =
+                movieRepository.findByFilter(cast,name,type)
+                        .stream().map(MovieDTO::of).collect(Collectors.toList());
+        return filteredmovieDTOList;
+    }
+
+    @Override
     public List<MovieDTO> getAllMovieByName(String name) {
         final List<MovieDTO> filteredmovieDTOList =
                 movieRepository.findByName(name).stream().map(MovieDTO::of).collect(Collectors.toList());

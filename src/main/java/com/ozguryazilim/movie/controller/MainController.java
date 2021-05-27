@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,13 +42,12 @@ public class MainController {
             @RequestParam(value = "type", required = true) String type,
             Model model
     ) {
-        List<MovieDTO> movieList = null;
-        if(!name.trim().isEmpty() && !name.trim().isBlank()){
-            movieList = movieService.getAllMovieByName(name.trim());
-        } else if(!cast.trim().isEmpty() && !cast.trim().isBlank()){
-            movieList = movieService.getAllMovieByCast(cast.trim());
-        } else if(!type.trim().isEmpty() && !type.trim().isBlank()){
-            movieList = movieService.getAllMovieByType(type.trim());
+        List<MovieDTO> movieList;
+        if((!cast.trim().isEmpty() && !cast.trim().isBlank())
+                || (!name.trim().isEmpty() && !name.trim().isBlank())
+                || (!type.trim().isEmpty() && !type.trim().isBlank())
+        ){
+            movieList = movieService.getAllMovieByFilter(cast.trim(),name.trim(),type.trim());
         } else {
             return "redirect:/showAllMovies";
         }
@@ -80,10 +82,9 @@ public class MainController {
             @RequestParam(value = "language", required = true) String language,
             @RequestParam(value = "cast", required = true) String cast,
             Model model
-    ) {
+    ) throws ParseException {
         String[] langs = language.split(",");
         String[] casts = cast.split(",");
-
         Optional<MovieModel> movieModelToUpdate = movieService.getMovieByIdAsModel(id);
         List<LanguageModel> languageModelList = new ArrayList<>();
         List<CastModel> castModelList = new ArrayList<>();
@@ -91,7 +92,7 @@ public class MainController {
         if (movieModelToUpdate.isPresent()) {
             MovieModel movieModel = movieModelToUpdate.get();
             movieModel.setName(name);
-            movieModel.setYear(year);
+            movieModel.setYear(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(year));
             movieModel.setType(type);
             movieModel.setExplanation(explanation);
             movieModel.setMedia(media);

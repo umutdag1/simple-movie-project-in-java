@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface MovieService {
 
     List<MovieDTO> getAllMovie();
+    List<MovieDTO> getAllMovieByFilter(String cast,String name,String type);
     List<MovieDTO> getAllMovieByName(String name);
     List<MovieDTO> getAllMovieByCast(String cast);
     List<MovieDTO> getAllMovieByType(String type);

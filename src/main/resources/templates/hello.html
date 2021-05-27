@@ -28,7 +28,7 @@
         </div>
     </form>
     <div class="row mt-3">
-        <div class="card offset-md-1 col-md-3" th:each="movie, state : ${movieList}">
+        <div class="card offset-md-1 col-md-3" th:each="movie, state : ${movieList}" th:if="${movieList != null}">
             <div class="card-body">
                 <div class="card-text">
                     <span><strong>Name : </strong></span>

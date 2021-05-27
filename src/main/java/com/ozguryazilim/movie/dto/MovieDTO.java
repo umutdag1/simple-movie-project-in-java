@@ -1,11 +1,15 @@
 package com.ozguryazilim.movie.dto;
 
+import com.ozguryazilim.movie.model.LanguageModel;
 import com.ozguryazilim.movie.model.MovieModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +21,8 @@ public class MovieDTO{
 
     private String name;
 
-    private String year;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date year;
 
     private String type;
 
@@ -41,5 +46,9 @@ public class MovieDTO{
                 LanguageDTO.ofList(movieModel.getLang()),
                 CastDTO.ofList(movieModel.getCast())
         );
+    }
+
+    public static List<MovieDTO> ofList(List<MovieModel> movieModel){
+        return movieModel.stream().map(MovieDTO::of).collect(Collectors.toList());
     }
 }

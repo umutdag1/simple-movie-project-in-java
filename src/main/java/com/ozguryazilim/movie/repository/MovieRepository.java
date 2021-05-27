@@ -19,4 +19,9 @@ public interface MovieRepository extends JpaRepository<MovieModel, Long> {
     )
     List<MovieModel> findByCast(String cast);
     Optional<MovieModel> findByType(String type);
+    @Query(value = "SELECT m.*,c.* FROM movies m " +
+            "INNER JOIN movies_cast mc ON mc.movie_model_movie_id = m.movie_id " +
+            "INNER JOIN casts c ON c.cast_id = mc.cast_cast_id " +
+            "WHERE c.cast_name = ?1 OR m.movie_name = ?2 OR m.movie_type = ?3 ",nativeQuery = true)
+    List<MovieModel> findByFilter(String cast,String name,String type);
 }

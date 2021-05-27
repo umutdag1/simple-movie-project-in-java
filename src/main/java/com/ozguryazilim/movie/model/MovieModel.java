@@ -1,8 +1,10 @@
 package com.ozguryazilim.movie.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -25,7 +27,8 @@ public class MovieModel {
     @Column(name = "movie_released_year",length = 5)
     @Getter
     @Setter
-    private String year;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date year;
 
     @Column(name = "movie_type",length = 20)
     @Getter

@@ -21,7 +21,7 @@
       </div>
       <div class="mb-3">
         <label for="year" class="form-label">Year</label>
-        <input type="text" class="form-control" id="year" th:name="year" th:value="${movieDTO.get().getYear()}">
+        <input type="text" class="form-control" id="year" th:name="year" th:value="${movieDTO.get().getYear().toString()}">
       </div>
       <div class="mb-3">
         <label for="type" class="form-label">Type</label>
